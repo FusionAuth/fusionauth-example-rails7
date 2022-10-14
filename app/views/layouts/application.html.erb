@@ -6,11 +6,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+<link rel="stylesheet" href="https://local.fusionauth.io/css/font-awesome-4.7.0.min.css"/>
+<link rel="stylesheet" href="https://local.fusionauth.io/css/fusionauth-style.css?version=1.40.2"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body class="app-sidebar-closed">
+<main>
+  <header class="app-header">
+    <div class="right-menu">
+      <nav>
+        <ul>
+            <li class="help"><a target="_blank" href="https://fusionauth.io/docs/"><i class="fa fa-question-circle-o"></i> Help</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+<main class="page-body container">
+<%= yield %>
+</main>
+
+
+
 </html>
