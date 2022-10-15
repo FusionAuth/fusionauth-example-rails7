@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get "/articles", to: "articles#index"
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/oauth2-callback', to: 'oauth#oauth_callback'
+  get '/logout', to: 'oauth#logout'
+  get '/login', to: 'oauth#login'
 end
 

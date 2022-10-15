@@ -67,4 +67,11 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # OAuth configuration
+  config.x.oauth.client_id = "7a4c8de0-6146-4725-8a9e-9bc3deea7fd1"
+  config.x.oauth.client_secret = "7KPGsbKc2jNU3Thg0ZmDSlbomo2vqsticdkSq0GNjlk"
+  config.x.oauth.idp_url = "https://local.fusionauth.io/"
+  config.x.oauth.redirect_uri = "http://localhost:3000/oauth2-callback"
+
 end
