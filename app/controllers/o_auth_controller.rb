@@ -42,7 +42,7 @@ class OAuthController < ApplicationController
   end
 
   def login
-    redirect_to @oauth_client.auth_code.authorize_url
+    redirect_to @oauth_client.auth_code.authorize_url, allow_other_host: true 
   end
 end
 
