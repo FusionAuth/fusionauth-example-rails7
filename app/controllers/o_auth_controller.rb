@@ -1,4 +1,7 @@
 class OAuthController < ApplicationController
+
+  skip_before_action :require_login
+
   def initialize
     @oauth_client = OAuth2::Client.new(Rails.configuration.x.oauth.client_id,
                                        Rails.configuration.x.oauth.client_secret,
@@ -20,7 +23,7 @@ class OAuthController < ApplicationController
     begin
       decoded = TokenDecoder.new(token, @oauth_client.id).decode
     rescue Exception => error
-      "An unexpected exception occurred: #{error.inspect}"
+      puts "An unexpected exception occurred: #{error.inspect}"
       head :forbidden
       return
     end
@@ -28,12 +31,11 @@ class OAuthController < ApplicationController
     # Set the token on the user session
     session[:user_jwt] = {value: decoded, httponly: true}
 
-    redirect_to root_path
+    redirect_to articles_path
   end
 
-  def logout
-    # Invalidate session with FusionAuth
-    @oauth_client.request(:get, 'oauth2/logout')
+  # will be called by FusionAuth
+  def endsession
 
     # Reset Rails session
     reset_session
@@ -41,8 +43,18 @@ class OAuthController < ApplicationController
     redirect_to root_path
   end
 
+  def logout
+     
+    redirect_to Rails.configuration.x.oauth.idp_url + "/oauth2/logout?client_id=" + Rails.configuration.x.oauth.client_id, allow_other_host: true 
+
+  end
+
   def login
     redirect_to @oauth_client.auth_code.authorize_url, allow_other_host: true 
+  end
+
+  def register
+    redirect_to @oauth_client.auth_code.authorize_url.gsub!('authorize','register'), allow_other_host: true 
   end
 end
 
