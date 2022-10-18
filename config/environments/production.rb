@@ -90,4 +90,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # OAuth configuration
+  config.x.oauth.client_id = "eafb0310-8985-4976-83fb-2af78d601abb"
+  config.x.oauth.client_secret = ENV['CLIENT_SECRET']
+  config.x.oauth.idp_url = "https://userdemo.fusionauth.io"
+  config.x.oauth.redirect_uri = "http://localhost:3000/oauth2-callback"
 end
