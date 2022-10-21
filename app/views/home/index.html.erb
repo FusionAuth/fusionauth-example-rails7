@@ -1,16 +1,3 @@
-
-  <div class="row center">
-    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
-<div class="panel">
-<p>
-<% if session[:user_jwt].nil? %>
-<%= link_to "register", register_path %> | <%= link_to "login", login_path %>
-<% else %>
-<%= link_to "logout", logout_path %>
-<% end %>
-</div>
-<div class="panel">
-  <main>
 <h4>Welcome to the FusionAuth DEMO application</h4>
 <p>
 <% if session[:user_jwt].nil? %>
@@ -19,12 +6,3 @@ Please <%= link_to "register", register_path %> or <%= link_to "login", login_pa
 Please <%= link_to "logout", logout_path %>.
 <% end %>
 </p>
-  </main>
-</div>
-</div>
-</div>
-
-<div class="row center">
-  <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
-  </div>
-</div>

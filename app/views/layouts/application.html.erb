@@ -24,9 +24,32 @@
 
 
 <main class="page-body container">
+  <div class="row center">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+<div class="panel">
+<p>
+<% if session[:user_jwt].nil? %>
+<%= link_to "register", register_path %> | <%= link_to "login", login_path %>
+<% else %>
+<%= link_to "logout", logout_path %>
+<% end %>
+</div>
+
+<div class="panel">
+  <main>
 <%= yield %>
+  </main>
+</div>
+</div>
+</div>
+
+<div class="row center">
+  <div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
+  </div>
+</div>
+
 </main>
 
-
-
 </html>
+
+
