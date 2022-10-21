@@ -95,5 +95,5 @@ Rails.application.configure do
   config.x.oauth.client_id = "eafb0310-8985-4976-83fb-2af78d601abb"
   config.x.oauth.client_secret = ENV['CLIENT_SECRET']
   config.x.oauth.idp_url = "https://userdemo.fusionauth.io"
-  config.x.oauth.redirect_uri = "http://localhost:3000/oauth2-callback"
+  config.x.oauth.redirect_uri = "https://confapp.onrender.com/oauth2-callback"
 end
