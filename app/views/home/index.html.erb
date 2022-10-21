@@ -5,7 +5,11 @@
   <main>
 <h4>Welcome to the FusionAuth DEMO application</h4>
 <p>
-Please <%= link_to "register", register_path %> or  <%= link_to "login", login_path %>. 
+<% if session[:user_jwt].nil? %>
+Please <%= link_to "register", register_path %> or <%= link_to "login", login_path %>. 
+<% else %>
+Please <%= link_to "logout", logout_path %>.
+<% end %>
 </p>
   </main>
 </div>
